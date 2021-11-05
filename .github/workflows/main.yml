@@ -21,11 +21,11 @@ jobs:
       - name: Build SPA
         run: npm run build
       - name: Initialize gcloud
-        uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+        uses: google-github-actions/setup-gcloud@master
         with:
-          version: '363.0.0'
-          service_account_email: ${{ secrets.GCP_SA_EMAIL }}
+          project_id: defiodds-dev
           service_account_key: ${{ secrets.GCP_SA_KEY }}
+          export_default_credentials: true
       - name: Deploy files to GCP Dev Bucket
         run: gsutil -m rsync -d -c -r build gs://app-dev.defiodds.io
       - name: Set public access on GCP Dev Bucket
