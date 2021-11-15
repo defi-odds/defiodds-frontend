@@ -8,9 +8,8 @@ import useCollapseDrawer from '../../hooks/useCollapseDrawer';
 //
 import { MHidden } from '../../components/@material-extend';
 import Searchbar from './Searchbar';
-import AccountPopover from './AccountPopover';
-import NotificationsPopover from './NotificationsPopover';
 import SettingMode from '../../components/settings/SettingMode';
+import ConnectWallet from './ConnectWallet';
 
 // ----------------------------------------------------------------------
 
@@ -27,7 +26,8 @@ const RootStyle = styled(AppBar)(({ theme }) => ({
   backgroundColor: alpha(theme.palette.background.default, 0.72),
   [theme.breakpoints.up('lg')]: {
     width: `calc(100% - ${DRAWER_WIDTH + 1}px)`
-  }
+  },
+  color: theme.palette.text.primary
 }));
 
 const ToolbarStyle = styled(Toolbar)(({ theme }) => ({
@@ -67,8 +67,7 @@ export default function DashboardNavbar({ onOpenSidebar }: DashboardNavbarProps)
 
         <Stack direction="row" alignItems="center" spacing={{ xs: 0.5, sm: 1.5 }}>
           <SettingMode />
-          <NotificationsPopover />
-          <AccountPopover />
+          <ConnectWallet />
         </Stack>
       </ToolbarStyle>
     </RootStyle>
